@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>
+            Silly Story Generator 
+         </title>
+        <style>
+          body {
+              margin: 0;
+              background-color: rgb(197, 188, 188);
+              font-family: helvetica, sans-serif;
+          }
+          header {
+              text-align: center;
+              padding: 5px 0px;
+              background-color: rgba(22,22,22,.2);
+              color: #fff;
+              margin-bottom: 10px;
+          }
+
+          .container, .storyCont {
+            margin: 0 auto;
+            width: 380px;
+          }
+
+          span {
+              font-size: 20px;
+          }
+          main {
+              text-align: center;
+          }
+
+          .country {padding: 20px 0px 20px 0px;}
+
+          .story {
+              line-height: 1em;
+              font-size: 22px;   
+              background: rgba(22,22,22,.2);
+              padding: 10px;
+              border-radius: 10px;    
+              color: #000000;
+              visibility:hidden;
+          }
+    
+
+          label {
+              font-size: 20px;
+          }
+
+          input[type="text"] {
+              display: inline-block;
+              padding: 5px 10px;
+              border: 2px solid #000;
+          }
+
+          input[type="button"] {
+              font-weight: bold;
+              font-size: 16px;
+              width: 350px;
+              height: 50px;
+              border-radius: 10px;
+              background-color: rgba(255,255,255,.5);
+              opacity: 0.8;
+              box-shadow: 3px 3px;
+              padding-top: 5px;
+          }
+        </style>
+    </head>
+
+    <body>
+        <header>
+           <h1>Silly Story Generator</h1>
+        </header>
+
+        <main>
+           <div class="container">
+               <div class="name">
+                   <label for="name">Enter Custom Name: </label>
+                   <input type="text" class="customName" id="customName">
+               </div>
+                <div class="country">
+                   <span>Choose your country: &nbsp; </span> 
+                    <label for="us">US</label>
+                    <input id="us" name="usuk" type="radio" value="US" checked>
+                    <label for="uk">UK</label>
+                    <input id="uk" name="usuk" type="radio" value="UK">
+                </div>
+               </div>
+               <div class="storyCont">
+                   <p class="story"></p>           
+               </div>
+               <div class="submit">
+                   <input type="button" name="submit" class="randomize" id="submitId" value="Generate random story">
+               </div>
+           </div>
+        </main>
+
+        <script>
+
+         //   document.querySelector('html').style.backgroundColor = 'red';
+        
+            const customName = document.getElementById('customName');
+            const randomize = document.querySelector('.randomize');
+            const story = document.querySelector('.story');
+
+            function randomValueFromArray(array){
+                const random = Math.floor(Math.random()*array.length);
+                return array[random];
+            }
+
+           let storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
+           let insertX = [
+                            'Willy the Goblin',
+                            'Big Daddy',
+                            'Father Christmas'
+                        ];
+            
+            let insertY = [
+                            'the soup kitchen',
+                            'Disneyland',
+                            'the White House'
+                         ];
+            
+            let insertZ = [
+                            'spontaneously combusted',
+                            'melted into a puddle on the sidewalk',
+                            'turned into a slug and crawled away'
+                          ];
+
+            randomize.addEventListener('click', result);
+
+            function result() {
+                let newStory = storyText;
+                let xItem = randomValueFromArray(insertX);
+                let yItem = randomValueFromArray(insertY);
+                let zItem = randomValueFromArray(insertZ);
+
+                newStory = newStory.replace(':insertx:', xItem);
+                newStory = newStory.replace(':inserty:', yItem);
+                newStory = newStory.replace(':insertz:', zItem);
+                newStory = newStory.replace(':insertx:', xItem);
+
+
+                if(customName.value !== '') {
+                    let name = customName.value;
+                    newStory = newStory.replace('Bob', name);
+                } 
+
+                if(document.getElementById("uk").checked) {
+                    const weight = Math.round(300*0.0714286) + ' stone';
+                    const temperature =  Math.round((94-32) * 5 / 9) + ' centigrade';
+                    newStory = newStory.replace('94 fahrenheit', temperature);
+                    newStory = newStory.replace('300 pounds', weight);
+                }
+
+                story.textContent = newStory;
+                story.style.visibility = 'visible';
+            }
+
+        </script>
+    </body>
+</html>
