@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Lorem Ipsum Generator
+        </title>
+        <style> 
+            *, *:before, *:after {
+                box-sizing: border-box;
+            }
+            
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: 0;
+            font-family:'Courier New', Courier, monospace;
+            font-size: 16px;
+            line-height: 1em;
+        }
+
+
+        section {
+            max-width: 700px;
+            margin: 0 auto;
+
+        }
+
+        h1 {
+            font-weight: bold;
+            text-transform: uppercase
+        }
+
+        .main {
+            display: inline;
+        }
+
+        .main-head {
+            padding: 5px 10px;
+            line-height: 1em;
+            background-color: gray;
+
+        }
+
+        .paraNo, .wordNo, .genBtn {
+            -webkit-align-items: center; 
+            align-items: center; 
+        }
+
+        .main-head > .paraNo , .wordNo {
+            border: solid 1px #666;
+            text-align: center;
+            padding: 10px 15px;
+            font-weight: bold;
+
+        }
+
+        .main-head .genBtn, .resetBtn {
+            background-color: rgb(239, 239, 239);
+            border: 2px solid rgb(170, 170, 170);
+            width: 20%;
+            padding: 10px 15px;
+        }
+
+        .textarea {
+            padding: 1em 1.5em;
+            background-color: yellowgreen;
+        }
+
+        .textarea, .lptext {
+            visibility: hidden;
+        }
+
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <section>
+                <div class="heading">
+                    <h1>Lorem Ipsum Generator</h1>
+                    <p>Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!</p>
+                </div>
+                <div class="main">
+                   <div class="main-head">
+                       <label for="paraNo">Paragraphs</label>
+                        <input type="text" class="paraNo" name="paraNo" size="3" value="5" maxlength="3">
+                        <label for="wordNo">Words</label>
+                        <input type="text" class="wordNo" name="wordNo" size="3" value="5" maxlength="3">
+                        <input type="button" class="genBtn" id="genBtn" value="Generate">
+                        <input type="button" class="resetBtn" id="resetBtn" value="Reset">
+                    </div>   
+                   <div>
+                    <div class="textarea">
+                    </div>
+                </div>
+                   </div>
+                </div>
+            </section>
+        </main>
+
+    </body>
+    <script>
+        const textarea = document.querySelector('.textarea')
+        const paraNumber = document.querySelector('.paraNo');
+        const para = document.querySelector('.lptext');
+        const generate = document.getElementById('genBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        
+        let loremText = 'Lorem ipsum :loremx: :loremx: :loremx: :loremx: :loremx: :loremx: :loremx: :loremx: aliquet ut, :loremx: eros. :loremy: Duis mollis, :loremy: :loremx: egestas felis, :loremy:. :loremx: quis nunc fermentum, tincidunt :loremx: malesuada elit. :loremy: :loremy: :loremy: Donec nec :loremx: :loremx:';
+        let loremX = [ 'dolor', 'sit amet,', 'consectetur', 'adipiscing elit.', 'Maecenas', 'nibh', 'libero,', 'lobortis', 'sit', 'amet', 'aliquet ut,', 'vehicula', 'Mauris non interdum diam, eleifend lacinia felis', 'eros.'];
+        let loremY = [ ' Cras porta orci non odio tristique pretium.', 'erat vel consequat accumsan,', 'sit amet luctus est nulla vel tellus', 'adipiscing elit.', 'Mauris non interdum diam, eleifend lacinia felis', 'Nunc tempus efficitur varius.', 'Suspendisse eget elit eget lorem blandit luctus.'];
+
+        generate.addEventListener('click', result);
+        resetBtn.addEventListener('click', resetPara);
+
+        
+        function randomValueFromArray(array){
+        //    const random = Math.floor(Math.random()*array.length);
+         //   return array[random];
+        }
+        
+        
+
+        function result() { 
+            let newloremText = loremText;
+            let xItem = randomValueFromArray(loremX);
+            let yItem = randomValueFromArray(loremY);
+
+            newloremText = newloremText.replace(/:loremx:/g, xItem);
+            newloremText = newloremText.replace(/:loremy:/g, yItem);
+
+           // paraNumber = Number(paraNumber.value);
+           // let times = parseInt(paraNumber.value);
+           let times = Number(paraNumber.value);
+
+            for( i = 0; i < times; i++){
+                let paraText = document.createElement('p');
+                textarea.style.visibility = 'visible';  
+                paraText.textContent = newloremText;
+                document.querySelector('.textarea').appendChild(paraText);
+            }
+
+        }
+
+        function resetPara(){
+            const resetParas = document.querySelectorAll('.textarea p');
+            for (let i = 0 ; i < resetParas.length ; i++) {
+                resetParas[i].textContent = '';
+            }
+            textarea.style.visibility = 'hidden';
+        }
+
+       
+    </script>
+</html>
