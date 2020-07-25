@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Background Color Changer
+    </title>
+    <style> 
+        body {
+            background-color: #800000;
+            padding: 10em 5%;
+            }
+
+            *, ::after, ::before {
+                    box-sizing: border-box;
+                }
+
+            .outer {
+            display: flex; 
+            -ms-flex-align: center;
+            flex-wrap: wrap;
+
+                /*
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;*/
+
+            }
+
+            
+            p {
+            font-size: 1.5em;
+            color: #fff;
+            text-align:center;
+            }
+
+            span {
+            text-transform: uppercase;
+            }
+
+
+            .outer .inner {
+            margin: auto;
+            }
+
+            button {
+            height: 4rem;
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 0;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 4px 4px 0px 0px #000000;
+            cursor: default;
+            }
+
+            button:hover {
+            padding: 10px 15px;
+            background-color: #ccc;
+            border: 0;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 16px;
+            }
+
+            button:active {
+                border: 2px solid #17739e;
+                background-color: #17739e;
+                box-shadow: none;
+            }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="outer">
+            <div class="inner">
+              <button>Click Me for a Surprise</button>
+              <p> Let's go <span>...................</span></p>
+            </div>
+          </div>
+      </main>
+
+    <script>
+        const button = document.querySelector('button');
+        const body = document.querySelector('body');
+        const text = document.querySelector('span');
+        const colors = ['red','blue', 'green', 'black' , 'gold'];
+
+        body.style.backgroundColor = 'purple';
+        button.addEventListener('click', changeColor);
+
+        function changeColor() {
+        if( button.textContent === 'Click Me for a Surprise') {
+            const colorWheel = parseInt(Math.random()*colors.length);
+            body.style.backgroundColor = colors[colorWheel];
+            text.textContent = "sicko mode!!";
+            button.textContent = 'Click Again for Good News!';
+        } else if ( button.textContent === 'Click Again for Good News!') {
+            const colorWheel = parseInt(Math.random()*colors.length);
+            body.style.backgroundColor = colors[colorWheel];
+            button.textContent = 'Click Me Again & Again!';
+            text.textContent = "flick flick!!";
+        }
+        else {
+            text.textContent = 'sicko mode!';
+        }
+        }
+/*
+        function again(){
+        const colorWheel = parseInt(Math.random()*colors.length);
+        body.style.backgroundColor = colors[colorWheel];
+        button.textContent = 'Click Me Again & Again!'
+        text.textContent = "flick flick!!"
+        button.addEventListener('click', randomColor);
+        }
+
+        function randomColor(){
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+         console.log(bgColor);
+        document.body.style.background = bgColor;
+        }
+        randomColor();
+
+
+
+
+
+        let quote = 'I dO nOT lIke gREen eGgS anD HAM';
+
+// Add your code here
+let lower = quote.toUpperCase();
+let fixedQuote = lower.charAt(0) + lower.slice(1).toLowerCase();
+let finalQuote = fixedQuote + '.';
+
+// Don't edit the code below here!
+
+section.innerHTML = ' ';
+let para1 = document.createElement('p');
+para1.textContent = fixedQuote;
+let para2 = document.createElement('p');
+para2.textContent = finalQuote;
+
+section.appendChild(para1);
+section.appendChild(para2);
+    
+
+
+    let theorem = `Pythagorean theorem`;
+
+let a = 5;
+let b = 8;
+
+let myString = `Using ${theorem}, we can work out that that if the two shortest sides of a right-angled triangle have lengths of ${a} and ${b}, the length of the hypotenuse is ${Math.sqrt(a**2 + b**2).toFixed(2)}`;
+
+
+*/
+    </script>
+</body>
+</html>
