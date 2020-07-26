@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Lorem Ipsum Generator
+        </title>
+        <style> 
+            *, *:before, *:after {
+                box-sizing: border-box;
+            }
+            body {
+            padding: 10px;
+            }
+
+            button {
+            margin-top: 20px;
+            text-align: center;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <main>
+                <section>
+                  <h1>Weather App</h1>
+                  <div>
+                    <label for="mode">Select time of day</label>
+                    <select id="mode" class="selectMode">
+                      <option value="day">Daytime</option>
+                      <option value="night">Nightime</option>
+                    </select>
+                  </div>
+              
+                  <div>
+                    <label for="weather">Select the weather type today: </label>
+                    <select id="weather" class="selectType">
+                      <option value="">--Make a Choice --- </option>
+                      <option value="sunny">Sunny</option>
+                      <option value="rainy">Rainy</option>
+                      <option value="snowing">Snowing</option>
+                      <option value="overcast">Overcast</option>
+                    </select>
+                  </div>
+              
+                  <p class="status"></p>
+              
+                  <button name="submit" id="submit">Show Me Something</button>
+        </main>
+
+    </body>
+    <script>
+        const selectType = document.querySelector('.selectType');
+        const selectTime = document.querySelector('.selectMode');
+        const para = document.querySelector('.status');
+        const button = document.querySelector('button');
+        const html = document.querySelector('body');
+        document.body.style.fontSize = "20px";
+
+        selectType.addEventListener('change', update);
+
+        function update(){
+        let forecast = selectType.value;
+        let time = selectTime.value;
+        if(forecast === 'sunny'){
+            para.textContent = 'It is nice and sunny outside today. Wear shorts! Go to the beach, or the park, and get an ice cream.';
+        }
+        else if (forecast === 'rainy'){
+            para.textContent = 'Rain is falling outside; take a rain coat and an umbrella, and don\'t stay out for too long.';
+        }
+        else if(forecast === "snowing"){
+            para.textContent = 'The snow is coming down — it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.';
+        }
+        else if(forecast === 'overcast'){
+            para.textContent = 'It isn\'t raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.';
+        }
+        }
+
+
+
+        function updateTime(bgColor, textColor){
+        html.style.backgroundColor = bgColor;
+        html.style.color = textColor;
+        }
+
+        selectTime.onchange = function() {
+        (selectTime.value === 'night') ? updateTime('black', 'white') : updateTime('white', 'black');
+        }
+
+    </script>
+</html>
