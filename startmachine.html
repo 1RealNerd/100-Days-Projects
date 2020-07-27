@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Background Color Changer
+    </title>
+</head>
+
+<body>
+    <main>
+        <div class="outer">
+          <div class="inner">
+            <button>Start Machine</button>
+            <p>The machine has stopped</p>
+          </div>
+        </div>
+      </main>
+
+    <script>
+
+        const btn = document.querySelector('button');
+        const para = document.querySelector('p');
+
+        //btn.addEventListener('click', updateBtn);
+        
+
+        btn.onclick = function updateBtn() {
+            if( btn.textContent === 'Start Machine') {
+                let name = prompt('Hey Wait! What is your name');
+                alert('Hello' + name + 'Machine has started');
+                btn.textContent = 'Stop Machine';
+                para.textContent = 'The machine has started';
+            } else {
+              btn.textContent = 'Start Machine';
+              para.textContent = 'The machine has stopped';
+            }
+        }
+
+    </script>
+</body>
+</html>
