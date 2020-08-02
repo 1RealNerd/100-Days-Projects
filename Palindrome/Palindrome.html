@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title> Palindrome Checker </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        header {
+            font-size: 24px;
+            padding-top: 2em;
+        }
+
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <header>Palindrome Checker</header>
+        <p>A palindrome is a word, phrase, number or sequence of words that reads the same backward as forward.</p>
+        <section>
+            <label for="name">Enter a word to check if it's a Palindrome: </label>
+            <input type="text" name="name">
+            <button>Check</button>
+            <p class="reverseString"></p>
+
+        </section>
+    </main>
+
+    <script>
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        const para = document.createElement('p');
+        const reversedString = document.querySelector('.reverseString');
+
+        function checkText(){
+            let text = input.value.replace(/[\W_]/g, '').toLowerCase();
+            let reversedText = text.split("").reverse().join("");
+
+            if(text === reversedText) {
+                reversedString.textContent = reversedText;
+                para.textContent = 'Great! This is a palindrome';
+            } else {
+                reversedString.textContent = reversedText;
+                para.textContent = 'Sorry! This is not a palindrome.';
+            }
+            
+        }
+        btn.addEventListener('click', checkText)
+        const sect = document.querySelector('section');
+        sect.appendChild(para);
+    </script>
+
+<script src="script.js"></script>
+</body>
+
+</html>
