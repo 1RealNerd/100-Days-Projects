@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Vowel Counter </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        header {
+            font-size: 24px;
+            padding-top: 2em;
+        }
+
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <header>Vowel Counter</header>
+        <p> Enter a word to count number of vowels</p>
+        <section>
+            <label for="name">Enter a word or sentence: </label>
+            <input type="text" name="name">
+            <button>Check</button>
+            <p class="numDisp"></p>
+
+        </section>
+    </main>
+
+    <script>
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        const numDisp = document.querySelector('.numDisp');
+
+
+        function countVowel(){
+          let vowels = 'aeiou';
+          let wordInput = input.value.toLowerCase();
+          let vowelCount = 0;
+
+          for(let i = 0; i < wordInput.length; i++) {
+              if(vowels.indexOf(wordInput[i]) !== -1) {
+                  vowelCount += 1;
+              }
+          }
+          numDisp.textContent = 'The Vowel Count is ' + vowelCount;
+        }
+        
+        btn.addEventListener('click', countVowel)
+    </script>
+
+</body>
+
+</html>
