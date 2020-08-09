@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Dollars 2 Cedis App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       * {
+           box-sizing: border-box;
+       }
+
+       body {
+           font-size: 20px;
+           text-align: center;
+           line-height: 1em;
+           padding-top: 30x;
+       }
+
+       input, header {
+           margin-top: 3em;
+       }
+    </style>
+</head>
+<body>
+   <section>
+       <header>Dollars 2 Cedis App</header>
+       <div class="sub">
+           <label for="dollarInput">Enter Dollar Value: </label>
+           <input type="number" name="dollarInput" step="0.01" min="0.00">
+           <button>Convert</button>
+           <p></p>
+       </div>
+    </section>
+
+    <script>
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        const para = document.querySelector('p');
+        const dollarValue = 5.80;
+
+        
+        function convertDollar() {
+            let floatValue = input.value;  // Accepts float number/input from user
+            let intValue = floatValue;
+            let cedisValue = dollarValue * intValue;
+            cedisValue = cedisValue.toFixed(2);
+            para.textContent =  '$' + floatValue + ' converted to Ghana Cedis is ' + 'GHC ' + cedisValue + ' pesewas';
+        }
+        
+        btn.addEventListener('click', convertDollar);
+        const sub = document.querySelector('.sub');
+        sub.appendChild(para);
+    </script>
+</body>
+</html
+
+
